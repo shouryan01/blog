@@ -5,6 +5,7 @@ import { request } from 'graphql-request';
 import { PublicationFragment } from '../../generated/graphql';
 import { SearchClient } from './search-client';
 import type { Metadata } from 'next';
+import { Suspense } from 'react';
 
 const GQL_ENDPOINT = process.env.NEXT_PUBLIC_HASHNODE_GQL_ENDPOINT!;
 
@@ -56,7 +57,9 @@ export default async function Search() {
     <AppProvider publication={publication}>
       <Layout publication={publication}>
         <Container className="mx-auto max-w-2xl px-5 py-10">
-          <SearchClient publication={publication} />
+          <Suspense fallback={<div className="text-center">Loading search...</div>}>
+            <SearchClient publication={publication} />
+          </Suspense>
         </Container>
       </Layout>
     </AppProvider>

@@ -3,7 +3,7 @@ import { Layout } from '../../components/layout';
 import { PersonalHeader } from '../../components/personal-theme-header';
 import { Footer } from '../../components/footer';
 import { AppProvider } from '../../components/contexts/appContext';
-import { PostFragment, PublicationFragment } from '../../generated/graphql';
+import { PostFragment, PublicationFragment, PostsByPublicationQuery, PostsByPublicationQueryVariables } from '../../generated/graphql';
 import request from 'graphql-request';
 import { PostsByPublicationDocument } from '../../generated/graphql';
 import Link from 'next/link';
@@ -40,10 +40,10 @@ export default async function Tags() {
   const allPosts: PostFragment[] = [];
   let hasNextPage = true;
   let after: string | undefined = undefined;
-  let publication: any = null;
+  let publication: PublicationFragment | null = null;
 
   while (hasNextPage) {
-    const data = await request(
+    const data: PostsByPublicationQuery = await request<PostsByPublicationQuery, PostsByPublicationQueryVariables>(
       process.env.NEXT_PUBLIC_HASHNODE_GQL_ENDPOINT,
       PostsByPublicationDocument,
       {
@@ -54,14 +54,14 @@ export default async function Tags() {
     );
 
     if (!publication) {
-      publication = data.publication;
+      publication = data.publication || null;
     }
 
     const posts = data.publication?.posts?.edges?.map((edge) => edge.node) || [];
     allPosts.push(...posts);
 
     hasNextPage = data.publication?.posts?.pageInfo?.hasNextPage || false;
-    after = data.publication?.posts?.pageInfo?.endCursor;
+    after = data.publication?.posts?.pageInfo?.endCursor || undefined;
   }
 
   if (!publication) {
@@ -112,7 +112,7 @@ export default async function Tags() {
 }
 
 export async function generateMetadata(): Promise<Metadata> {
-  const data = await request(
+  const data: PostsByPublicationQuery = await request<PostsByPublicationQuery, PostsByPublicationQueryVariables>(
     process.env.NEXT_PUBLIC_HASHNODE_GQL_ENDPOINT,
     PostsByPublicationDocument,
     {

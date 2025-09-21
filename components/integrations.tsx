@@ -3,6 +3,13 @@
 import { useEffect } from 'react';
 import { useAppContext } from './contexts/appContext';
 
+// Type declaration for gtag
+declare global {
+  interface Window {
+    gtag: (...args: any[]) => void;
+  }
+}
+
 export function Integrations() {
 	const { publication } = useAppContext();
 	const {
