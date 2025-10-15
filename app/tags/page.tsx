@@ -13,7 +13,7 @@ import type { Metadata } from 'next';
 // 从文章中提取所有标签并统计数量
 const getTagsWithCount = (posts: PostFragment[]) => {
   const tagCount: Record<string, { count: number; slug: string }> = {};
-  
+
   posts.forEach(post => {
     const tags = post.tags || [];
     tags.forEach(tag => {
@@ -68,8 +68,8 @@ export default async function Tags() {
     return (
       <div className="flex min-h-screen items-center justify-center">
         <div className="text-center">
-          <h1 className="text-2xl font-bold text-slate-900 dark:text-white">Publication not found</h1>
-          <p className="text-slate-500 dark:text-slate-400">Please check your configuration.</p>
+          <h1 className="text-2xl font-bold text-zinc-900 dark:text-white">Publication not found</h1>
+          <p className="text-zinc-500 dark:text-zinc-400">Please check your configuration.</p>
         </div>
       </div>
     );
@@ -83,22 +83,22 @@ export default async function Tags() {
         <Container className="mx-auto flex max-w-3xl flex-col items-stretch gap-10 px-5 py-10">
           <PersonalHeader />
           <main>
-            <h1 className="mb-8 text-3xl font-bold text-slate-900 dark:text-white">Tags</h1>
+            <h1 className="mb-8 text-3xl font-bold text-zinc-900 dark:text-white">Tags</h1>
             <div className="flex flex-wrap gap-4">
               {tags.map(({ name, count, slug }) => (
                 <Link
                   key={slug}
                   href={`/tags/${slug}`}
-                  className="group inline-flex items-center gap-2 rounded-lg border border-slate-200 px-4 py-2 text-slate-700 transition-colors hover:border-slate-300 hover:bg-slate-50 dark:border-slate-800 dark:text-slate-300 dark:hover:border-slate-700 dark:hover:bg-slate-900"
+                  className="group inline-flex items-center gap-2 rounded-lg border border-zinc-200 px-4 py-2 text-zinc-700 transition-colors hover:border-zinc-300 hover:bg-zinc-50 dark:border-zinc-800 dark:text-zinc-300 dark:hover:border-zinc-700 dark:hover:bg-zinc-900"
                 >
                   <span className="text-base">{name}</span>
-                  <span className="text-sm text-slate-500 dark:text-slate-400">
+                  <span className="text-sm text-zinc-500 dark:text-zinc-400">
                     ({count})
                   </span>
                 </Link>
               ))}
               {tags.length === 0 && (
-                <p className="text-center text-slate-500 dark:text-slate-400">
+                <p className="text-center text-zinc-500 dark:text-zinc-400">
                   No tags found.
                 </p>
               )}

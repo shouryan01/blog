@@ -14,7 +14,7 @@ export const Layout = ({ children, publication }: Props) => {
 		<>
 			<Meta publication={publication} />
 			<Scripts />
-			<div className="min-h-screen bg-white dark:bg-neutral-950">
+			<div className="min-h-screen bg-transparent">
 				<main>{children}</main>
 			</div>
 			<Analytics />

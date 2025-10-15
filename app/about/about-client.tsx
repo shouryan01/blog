@@ -31,14 +31,14 @@ export function AboutClient({ page }: Props) {
   if (page) {
     return (
       <article
-        className="prose prose-slate dark:prose-invert max-w-none prose-headings:font-semibold prose-a:text-blue-600 dark:prose-a:text-blue-400 prose-img:rounded-lg prose-pre:bg-slate-900"
+        className="prose prose-slate dark:prose-invert max-w-none prose-headings:font-semibold prose-a:text-blue-600 dark:prose-a:text-blue-400 prose-img:rounded-lg prose-pre:bg-zinc-900"
         dangerouslySetInnerHTML={{ __html: page.content.markdown }}
       />
     );
   }
 
   return (
-    <p className="text-center text-slate-500 dark:text-slate-400">
+    <p className="text-center text-zinc-500 dark:text-zinc-400">
       No about page content found. Please create an about page in your Hashnode dashboard.
     </p>
   );

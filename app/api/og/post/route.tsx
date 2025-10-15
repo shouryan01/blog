@@ -68,12 +68,12 @@ export async function GET(req: NextRequest) {
 				}}
 				tw="relative flex h-full w-full flex-col p-8 subpixel-antialiased"
 			>
-				{/* if blog is set to open in dark mode, then change text-slate-900 to text-white and change bg-white to bg-black */}
+				{/* if blog is set to open in dark mode, then change text-zinc-900 to text-white and change bg-white to bg-black */}
 				<div
 					tw={`relative flex flex-col items-center p-10 ${
 						isDefaultModeDark ? 'bg-black' : 'bg-white'
 					} ${
-						isDefaultModeDark ? 'text-white' : 'text-slate-900'
+						isDefaultModeDark ? 'text-white' : 'text-zinc-900'
 					} h-full w-full rounded-xl shadow-md`}
 				>
 					<div tw="absolute -top-px -left-px -right-px -bottom-px rounded-xl border-2 border-black/5" />

@@ -44,7 +44,7 @@ export function SearchClient({ publication }: Props) {
     if (searchQuery.trim()) {
       setIsLoading(true);
       setSearchError(undefined);
-      
+
       try {
         const searchData = await request<SearchResponse>(
           GQL_ENDPOINT,
@@ -78,7 +78,7 @@ export function SearchClient({ publication }: Props) {
 
         const newResults = searchData.searchPostsOfPublication.edges.map((edge) => edge.node);
         setSearchResults(newResults);
-        
+
         // Update URL
         const params = new URLSearchParams(searchParams?.toString());
         params.set('q', searchQuery.trim());
@@ -96,7 +96,7 @@ export function SearchClient({ publication }: Props) {
     <>
       {/* Search Form */}
       <div className="mb-12 text-center">
-        <h1 className="mb-8 text-3xl font-bold text-slate-900 dark:text-white">Search Articles</h1>
+        <h1 className="mb-8 text-3xl font-bold text-zinc-900 dark:text-white">Search Articles</h1>
         <form onSubmit={handleSearch}>
           <div className="relative mx-auto max-w-xl">
             <input
@@ -104,15 +104,15 @@ export function SearchClient({ publication }: Props) {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Type to search..."
-              className="w-full rounded-full border border-slate-200 bg-white px-6 py-3 pr-12 text-lg focus:border-blue-500 focus:outline-none dark:border-slate-700 dark:bg-slate-800 dark:text-white"
+              className="w-full rounded-full border border-zinc-200 bg-white px-6 py-3 pr-12 text-lg focus:border-blue-500 focus:outline-none dark:border-zinc-700 dark:bg-zinc-800 dark:text-white"
             />
             <button
               type="submit"
               disabled={isLoading}
-              className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-blue-500 dark:text-slate-500 dark:hover:text-blue-400 disabled:opacity-50"
+              className="absolute right-4 top-1/2 -translate-y-1/2 text-zinc-400 hover:text-blue-500 dark:text-zinc-500 dark:hover:text-blue-400 disabled:opacity-50"
             >
               {isLoading ? (
-                <div className="h-6 w-6 animate-spin rounded-full border-2 border-slate-300 border-t-blue-500"></div>
+                <div className="h-6 w-6 animate-spin rounded-full border-2 border-zinc-300 border-t-blue-500"></div>
               ) : (
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-6 w-6">
                   <path fillRule="evenodd" d="M10.5 3.75a6.75 6.75 0 100 13.5 6.75 6.75 0 000-13.5zM2.25 10.5a8.25 8.25 0 1114.59 5.28l4.69 4.69a.75.75 0 11-1.06 1.06l-4.69-4.69A8.25 8.25 0 012.25 10.5z" clipRule="evenodd" />
@@ -132,7 +132,7 @@ export function SearchClient({ publication }: Props) {
 
       {/* Search Results */}
       {searchQuery && !searchError && searchResults.length > 0 && (
-        <div className="mb-6 text-sm text-slate-600 dark:text-slate-400">
+        <div className="mb-6 text-sm text-zinc-600 dark:text-zinc-400">
           {searchResults.length} {searchResults.length === 1 ? 'result' : 'results'} for &ldquo;{searchQuery}&rdquo;
         </div>
       )}
@@ -143,14 +143,14 @@ export function SearchClient({ publication }: Props) {
             <h2 className="text-lg font-medium">
               <a
                 href={result.url}
-                className="text-slate-900 hover:text-blue-600 dark:text-slate-200 dark:hover:text-blue-400"
+                className="text-zinc-900 hover:text-blue-600 dark:text-zinc-200 dark:hover:text-blue-400"
               >
                 {result.title}
               </a>
             </h2>
             <time
               dateTime={result.publishedAt}
-              className="shrink-0 text-sm text-slate-600 dark:text-slate-400"
+              className="shrink-0 text-sm text-zinc-600 dark:text-zinc-400"
             >
               {new Date(result.publishedAt).toLocaleDateString('en-US', {
                 year: 'numeric',
@@ -164,7 +164,7 @@ export function SearchClient({ publication }: Props) {
 
       {/* No Results */}
       {searchQuery && !searchError && searchResults.length === 0 && !isLoading && (
-        <div className="text-center text-slate-600 dark:text-slate-400">
+        <div className="text-center text-zinc-600 dark:text-zinc-400">
           No results found for &ldquo;{searchQuery}&rdquo;
         </div>
       )}

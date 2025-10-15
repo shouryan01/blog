@@ -27,12 +27,12 @@ import { notFound } from 'next/navigation';
 const Post = ({ publication, post }: { publication: PublicationFragment; post: PostFullFragment }) => {
 	const highlightJsMonokaiTheme =
 		'.hljs{display:block;overflow-x:auto;padding:.5em;background:#23241f}.hljs,.hljs-subst,.hljs-tag{color:#f8f8f2}.hljs-emphasis,.hljs-strong{color:#a8a8a2}.hljs-bullet,.hljs-link,.hljs-literal,.hljs-number,.hljs-quote,.hljs-regexp{color:#ae81ff}.hljs-code,.hljs-section,.hljs-selector-class,.hljs-title{color:#a6e22e}.hljs-strong{font-weight:700}.hljs-emphasis{font-style:italic}.hljs-attr,.hljs-keyword,.hljs-name,.hljs-selector-tag{color:#f92672}.hljs-attribute,.hljs-symbol{color:#66d9ef}.hljs-class .hljs-title,.hljs-params{color:#f8f8f2}.hljs-addition,.hljs-built_in,.hljs-builtin-name,.hljs-selector-attr,.hljs-selector-id,.hljs-selector-pseudo,.hljs-string,.hljs-template-variable,.hljs-type,.hljs-variable{color:#e6db74}.hljs-comment,.hljs-deletion,.hljs-meta{color:#75715e}';
-	
+
 	const tagsList = (post.tags ?? []).map((tag) => (
 		<li key={tag.id}>
 			<Link
 				href={`/tag/${tag.slug}`}
-				className="inline-block rounded-full bg-slate-100 px-3 py-1 text-sm text-slate-700 hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700"
+				className="inline-block rounded-full bg-zinc-100 px-3 py-1 text-sm text-zinc-700 hover:bg-zinc-200 dark:bg-zinc-800 dark:text-zinc-300 dark:hover:bg-zinc-700"
 			>
 				#{tag.slug}
 			</Link>
@@ -52,11 +52,11 @@ const Post = ({ publication, post }: { publication: PublicationFragment; post: P
 			<style dangerouslySetInnerHTML={{ __html: highlightJsMonokaiTheme }}></style>
 			<article className="mx-auto max-w-2xl">
 				<header className="mb-8 space-y-6">
-					<h1 className="text-3xl font-bold tracking-tight text-slate-900 dark:text-white md:text-4xl">
+					<h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-white md:text-4xl">
 						{post.title}
 					</h1>
-					<div className="flex flex-wrap items-center gap-x-3 text-sm text-slate-500 dark:text-slate-400">
-						<span className="font-medium text-slate-700 dark:text-slate-300">{post.author.name}</span>
+					<div className="flex flex-wrap items-center gap-x-3 text-sm text-zinc-500 dark:text-zinc-400">
+						<span className="font-medium text-zinc-700 dark:text-zinc-300">{post.author.name}</span>
 						<span>·</span>
 						<DateFormatter dateString={post.publishedAt} />
 						<span>·</span>
@@ -96,18 +96,18 @@ export default async function PostOrPage({ params }: { params: Promise<{ slug: s
 	// Exclude common static file requests that shouldn't be processed as slugs
 	const staticFileExtensions = ['.ico', '.png', '.jpg', '.jpeg', '.gif', '.svg', '.css', '.js', '.woff', '.woff2', '.ttf', '.eot'];
 	const isStaticFile = staticFileExtensions.some(ext => slug.toLowerCase().endsWith(ext));
-	
+
 	if (isStaticFile) {
 		notFound();
 	}
 
 	// Try to fetch as a post first
 	const postData = await request(endpoint, SinglePostByPublicationDocument, { host, slug });
-	
+
 	if (postData.publication?.post) {
 		const post = postData.publication.post;
 		const publication = postData.publication;
-		
+
 		return (
 			<AppProvider publication={publication} post={post} page={null}>
 				<Layout publication={publication}>
@@ -126,11 +126,11 @@ export default async function PostOrPage({ params }: { params: Promise<{ slug: s
 
 	// Try to fetch as a page
 	const pageData = await request(endpoint, PageByPublicationDocument, { host, slug });
-	
+
 	if (pageData.publication?.staticPage) {
 		const page = pageData.publication.staticPage;
 		const publication = pageData.publication;
-		
+
 		return (
 			<AppProvider publication={publication} post={null} page={page}>
 				<Layout publication={publication}>
@@ -159,7 +159,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 	// Exclude common static file requests that shouldn't be processed as slugs
 	const staticFileExtensions = ['.ico', '.png', '.jpg', '.jpeg', '.gif', '.svg', '.css', '.js', '.woff', '.woff2', '.ttf', '.eot'];
 	const isStaticFile = staticFileExtensions.some(ext => slug.toLowerCase().endsWith(ext));
-	
+
 	if (isStaticFile) {
 		return {
 			title: 'Not Found',
@@ -172,7 +172,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 	if (postData.publication?.post) {
 		const post = postData.publication.post;
 		const publication = postData.publication;
-		
+
 		return {
 			title: post.seo?.title || post.title,
 			description: post.seo?.description || post.subtitle || post.brief,
@@ -208,7 +208,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 	if (pageData.publication?.staticPage) {
 		const page = pageData.publication.staticPage;
-		
+
 		return {
 			title: page.title,
 			description: page.title,

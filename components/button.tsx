@@ -28,7 +28,7 @@ export const Button = ({
 	switch (type) {
 		case 'outline':
 			buttonClassName =
-				'text-slate-950 bg-transparent dark:border-neutral-800 hover:bg-slate-50 dark:bg-transparent dark:hover:bg-neutral-800 dark:text-white';
+				'text-zinc-950 bg-transparent dark:border-neutral-800 hover:bg-zinc-50 dark:bg-transparent dark:hover:bg-neutral-800 dark:text-white';
 			break;
 
 		case 'primary':

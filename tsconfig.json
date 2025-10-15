@@ -19,7 +19,11 @@
 		"noEmit": true,
 		"lib": ["es2022", "dom", "dom.iterable"],
 		"plugins": [{ "name": "next" }],
-		"jsx": "preserve"
+		"jsx": "preserve",
+		"baseUrl": ".",
+		"paths": {
+			"@/*": ["./*"]
+		}
 	},
 	"include": ["next-env.d.ts", ".next/types/**/*.ts", "**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx"],
 	"exclude": ["node_modules"]

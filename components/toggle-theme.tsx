@@ -1,43 +1,36 @@
-'use client';
+'use client'
 
-import { ComponentProps, useEffect, useState } from 'react';
-import { useTheme } from 'next-themes';
-import { Moon, Sun } from './icons';
+import { Moon, Sun } from 'lucide-react'
+import { useTheme } from 'next-themes'
+import { useEffect, useState } from 'react'
 
-type Props = ComponentProps<'button'>;
+const ThemeSwitch = () => {
+  const [mounted, setMounted] = useState(false)
+  const { theme, setTheme, resolvedTheme } = useTheme()
 
-export function ToggleTheme(props: Props) {
-	const { setTheme, theme } = useTheme();
-	const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), [])
 
-	// useEffect only runs on the client, so now we can safely show the UI
-	useEffect(() => {
-		setMounted(true);
-	}, []);
+  const toggleTheme = () => {
+    setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')
+  }
 
-	if (!mounted) {
-		return (
-			<button
-				aria-label="toggle"
-				className="hover:bg-background border-0"
-				{...props}
-			>
-				<Sun className="aspect-square w-6" />
-			</button>
-		);
-	}
-
-	return (
-		<button
-			aria-label="toggle"
-			className="hover:bg-background border-0"
-			onClick={() => {
-				setTheme(theme === 'dark' ? 'light' : 'dark');
-			}}
-			{...props}
-		>
-			<Sun className="aspect-square w-6 scale-100 dark:hidden dark:scale-0" />
-			<Moon className="hidden aspect-square w-6 scale-0 dark:block dark:scale-100" />
-		</button>
-	);
+  return (
+    <button
+      onClick={toggleTheme}
+      className="hover:text-zinc-600 dark:hover:text-zinc-600 flex items-center justify-center rounded-lg p-2 font-bold transition-transform duration-200 hover:scale-110 hover:rotate-270 hover:bg-zinc-100 hover:dark:bg-zinc-900"
+      aria-label="Toggle theme"
+    >
+      {mounted ? (
+        resolvedTheme === 'dark' ? (
+          <Moon className="h-5 w-5" />
+        ) : (
+          <Sun className="h-5 w-5" />
+        )
+      ) : (
+        <div className="h-5 w-5" />
+      )}
+    </button>
+  )
 }
+
+export default ThemeSwitch

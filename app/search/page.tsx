@@ -46,8 +46,8 @@ export default async function Search() {
     return (
       <div className="flex min-h-screen items-center justify-center">
         <div className="text-center">
-          <h1 className="text-2xl font-bold text-slate-900 dark:text-white">Publication not found</h1>
-          <p className="text-slate-500 dark:text-slate-400">Please check your configuration.</p>
+          <h1 className="text-2xl font-bold text-zinc-900 dark:text-white">Publication not found</h1>
+          <p className="text-zinc-500 dark:text-zinc-400">Please check your configuration.</p>
         </div>
       </div>
     );

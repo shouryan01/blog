@@ -23,7 +23,7 @@ export function SeriesClient({ series }: Props) {
           ))}
         </div>
       ) : (
-        <p className="text-center text-slate-500 dark:text-slate-400">
+        <p className="text-center text-zinc-500 dark:text-zinc-400">
           {series.length > 0
             ? 'No series match your search criteria.'
             : 'No series found. Create your first series in the Hashnode dashboard.'}

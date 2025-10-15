@@ -18,12 +18,12 @@ const MONTHS = [
 // 按年份和月份分组文章
 const groupPostsByYearAndMonth = (posts: PostFragment[]) => {
   const groups: Record<number, Record<number, PostFragment[]>> = {};
-  
+
   posts.forEach(post => {
     const date = new Date(post.publishedAt);
     const year = date.getFullYear();
     const month = date.getMonth();
-    
+
     if (!groups[year]) {
       groups[year] = {};
     }
@@ -89,8 +89,8 @@ export default async function Archive() {
     return (
       <div className="flex min-h-screen items-center justify-center">
         <div className="text-center">
-          <h1 className="text-2xl font-bold text-slate-900 dark:text-white">Publication not found</h1>
-          <p className="text-slate-500 dark:text-slate-400">Please check your configuration.</p>
+          <h1 className="text-2xl font-bold text-zinc-900 dark:text-white">Publication not found</h1>
+          <p className="text-zinc-500 dark:text-zinc-400">Please check your configuration.</p>
         </div>
       </div>
     );
@@ -104,16 +104,16 @@ export default async function Archive() {
         <Container className="mx-auto flex max-w-3xl flex-col items-stretch gap-10 px-5 py-10">
           <PersonalHeader />
           <main>
-            <h1 className="mb-8 text-3xl font-bold text-slate-900 dark:text-white">Archive</h1>
+            <h1 className="mb-8 text-3xl font-bold text-zinc-900 dark:text-white">Archive</h1>
             <div className="space-y-12">
               {postsByYearAndMonth.map(({ year, months }) => (
                 <section key={year}>
-                  <h2 className="mb-6 text-2xl font-bold text-slate-900 dark:text-white">{year}</h2>
+                  <h2 className="mb-6 text-2xl font-bold text-zinc-900 dark:text-white">{year}</h2>
                   <div className="space-y-8">
                     {months.map(({ month, monthName, posts, postCount }) => (
                       <div key={month} className="space-y-3">
-                        <h3 className="text-lg font-semibold text-slate-700 dark:text-slate-300">
-                          {monthName} <span className="text-slate-500">({postCount})</span>
+                        <h3 className="text-lg font-semibold text-zinc-700 dark:text-zinc-300">
+                          {monthName} <span className="text-zinc-500">({postCount})</span>
                         </h3>
                         <ul className="space-y-4">
                           {posts.map((post) => (
@@ -122,12 +122,12 @@ export default async function Archive() {
                                 href={`/${post.slug}`}
                                 className="flex flex-col space-y-1"
                               >
-                                <span className="text-base text-slate-900 group-hover:text-blue-600 dark:text-slate-200 dark:group-hover:text-blue-400">
+                                <span className="text-base text-zinc-900 group-hover:text-blue-600 dark:text-zinc-200 dark:group-hover:text-blue-400">
                                   {post.title}
                                 </span>
-                                <div className="text-sm text-slate-500 dark:text-slate-400">
-                                  Date: <DateFormatter dateString={post.publishedAt} formatStr="MMMM d, yyyy" /> | 
-                                  Estimated Reading Time: {post.readTimeInMinutes} min | 
+                                <div className="text-sm text-zinc-500 dark:text-zinc-400">
+                                  Date: <DateFormatter dateString={post.publishedAt} formatStr="MMMM d, yyyy" /> |
+                                  Estimated Reading Time: {post.readTimeInMinutes} min |
                                   Author: {publication.title}
                                 </div>
                               </Link>

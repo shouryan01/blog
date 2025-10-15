@@ -4,10 +4,10 @@ import '../styles/index.css';
 
 export const metadata: Metadata = {
 	title: {
-		default: 'Blog',
-		template: '%s | Blog',
+		default: 'Shouryan Nikam',
+		template: '%s | Shouryan Nikam',
 	},
-	description: 'A personal blog built with Next.js and Hashnode API',
+	description: 'Shouryan Nikam\'s website',
 	metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'),
 };
 
@@ -18,8 +18,8 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang="en" suppressHydrationWarning>
-			<body suppressHydrationWarning>
-				<ThemeProvider 
+			<body suppressHydrationWarning className="bg-white dark:bg-zinc-950">
+				<ThemeProvider
 					attribute="class"
 					defaultTheme="system"
 					enableSystem

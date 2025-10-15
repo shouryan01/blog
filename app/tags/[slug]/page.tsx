@@ -12,7 +12,7 @@ import type { Metadata } from 'next';
 
 export default async function TagPosts({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  
+
   // Fetch all posts using pagination (max 50 per request)
   const allPosts: PostFragment[] = [];
   let hasNextPage = true;
@@ -45,8 +45,8 @@ export default async function TagPosts({ params }: { params: Promise<{ slug: str
     return (
       <div className="flex min-h-screen items-center justify-center">
         <div className="text-center">
-          <h1 className="text-2xl font-bold text-slate-900 dark:text-white">Publication not found</h1>
-          <p className="text-slate-500 dark:text-slate-400">Please check your configuration.</p>
+          <h1 className="text-2xl font-bold text-zinc-900 dark:text-white">Publication not found</h1>
+          <p className="text-zinc-500 dark:text-zinc-400">Please check your configuration.</p>
         </div>
       </div>
     );
@@ -77,10 +77,10 @@ export default async function TagPosts({ params }: { params: Promise<{ slug: str
           <PersonalHeader />
           <main>
             <div className="mb-8 flex items-baseline gap-4">
-              <h1 className="text-3xl font-bold text-slate-900 dark:text-white">
+              <h1 className="text-3xl font-bold text-zinc-900 dark:text-white">
                 {tagName || slug}
               </h1>
-              <span className="text-base text-slate-500 dark:text-slate-400">
+              <span className="text-base text-zinc-500 dark:text-zinc-400">
                 {taggedPosts.length} {taggedPosts.length === 1 ? 'post' : 'posts'}
               </span>
             </div>
@@ -90,24 +90,24 @@ export default async function TagPosts({ params }: { params: Promise<{ slug: str
                   <div className="flex items-baseline justify-between gap-2">
                     <Link
                       href={`/${post.slug}`}
-                      className="text-lg font-medium text-slate-900 hover:text-blue-600 dark:text-white dark:hover:text-blue-400"
+                      className="text-lg font-medium text-zinc-900 hover:text-blue-600 dark:text-white dark:hover:text-blue-400"
                     >
                       {post.title}
                     </Link>
                     <time
                       dateTime={post.publishedAt}
-                      className="shrink-0 text-sm text-slate-500 dark:text-slate-400"
+                      className="shrink-0 text-sm text-zinc-500 dark:text-zinc-400"
                     >
                       <DateFormatter dateString={post.publishedAt} formatStr="MMM d, yyyy" />
                     </time>
                   </div>
                   {post.brief && (
-                    <p className="text-sm text-slate-600 dark:text-slate-400">{post.brief}</p>
+                    <p className="text-sm text-zinc-600 dark:text-zinc-400">{post.brief}</p>
                   )}
                 </article>
               ))}
               {taggedPosts.length === 0 && (
-                <p className="text-center text-slate-500 dark:text-slate-400">
+                <p className="text-center text-zinc-500 dark:text-zinc-400">
                   No posts found with this tag.
                 </p>
               )}

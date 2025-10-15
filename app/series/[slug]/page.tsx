@@ -14,7 +14,7 @@ import { notFound } from 'next/navigation';
 
 export default async function SeriesDetail({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  
+
   const data = await request(
     process.env.NEXT_PUBLIC_HASHNODE_GQL_ENDPOINT,
     SingleSeriesByPublicationDocument,
@@ -48,15 +48,15 @@ export default async function SeriesDetail({ params }: { params: Promise<{ slug:
                   />
                 </div>
               )}
-              <h1 className="mb-4 text-4xl font-bold text-slate-900 dark:text-white">
+              <h1 className="mb-4 text-4xl font-bold text-zinc-900 dark:text-white">
                 {series.name}
               </h1>
               {series.description?.text && (
-                <p className="text-lg text-slate-600 dark:text-slate-400">
+                <p className="text-lg text-zinc-600 dark:text-zinc-400">
                   {series.description.text}
                 </p>
               )}
-              <div className="mt-4 text-sm text-slate-500 dark:text-slate-400">
+              <div className="mt-4 text-sm text-zinc-500 dark:text-zinc-400">
                 {series.posts.totalDocuments} {series.posts.totalDocuments === 1 ? 'post' : 'posts'} in series
               </div>
             </header>
@@ -64,18 +64,18 @@ export default async function SeriesDetail({ params }: { params: Promise<{ slug:
               {series.posts.edges.map(({ node: post }, index) => (
                 <article
                   key={post.slug}
-                  className="relative flex flex-col space-y-3 rounded-lg border border-slate-200 bg-white p-6 shadow-sm transition-colors hover:border-slate-300 dark:border-slate-800 dark:bg-slate-900 dark:hover:border-slate-700"
+                  className="relative flex flex-col space-y-3 rounded-lg border border-zinc-200 bg-white p-6 shadow-sm transition-colors hover:border-zinc-300 dark:border-zinc-800 dark:bg-zinc-900 dark:hover:border-zinc-700"
                 >
-                  <div className="absolute -left-4 flex h-8 w-8 items-center justify-center rounded-full bg-slate-200 text-sm font-semibold text-slate-600 dark:bg-slate-800 dark:text-slate-400">
+                  <div className="absolute -left-4 flex h-8 w-8 items-center justify-center rounded-full bg-zinc-200 text-sm font-semibold text-zinc-600 dark:bg-zinc-800 dark:text-zinc-400">
                     {index + 1}
                   </div>
-                  <h2 className="text-xl font-bold text-slate-900 dark:text-white">
+                  <h2 className="text-xl font-bold text-zinc-900 dark:text-white">
                     <Link href={`/${post.slug}`} className="hover:text-blue-600 dark:hover:text-blue-400">
                       {post.title}
                     </Link>
                   </h2>
-                  <p className="text-slate-600 dark:text-slate-400">{post.brief}</p>
-                  <div className="flex items-center gap-4 text-sm text-slate-500 dark:text-slate-500">
+                  <p className="text-zinc-600 dark:text-zinc-400">{post.brief}</p>
+                  <div className="flex items-center gap-4 text-sm text-zinc-500 dark:text-zinc-500">
                     <time dateTime={post.publishedAt}>
                       {format(new Date(post.publishedAt), 'MMM d, yyyy')}
                     </time>

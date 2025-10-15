@@ -26,8 +26,8 @@ export default async function SeriesIndex() {
     return (
       <div className="flex min-h-screen items-center justify-center">
         <div className="text-center">
-          <h1 className="text-2xl font-bold text-slate-900 dark:text-white">Publication not found</h1>
-          <p className="text-slate-500 dark:text-slate-400">Please check your configuration.</p>
+          <h1 className="text-2xl font-bold text-zinc-900 dark:text-white">Publication not found</h1>
+          <p className="text-zinc-500 dark:text-zinc-400">Please check your configuration.</p>
         </div>
       </div>
     );
@@ -40,10 +40,10 @@ export default async function SeriesIndex() {
           <PersonalHeader />
           <main>
             <div className="mb-8 flex items-center justify-between">
-              <h1 className="text-3xl font-bold text-slate-900 dark:text-white">
+              <h1 className="text-3xl font-bold text-zinc-900 dark:text-white">
                 Series
               </h1>
-              <p className="text-sm text-slate-500 dark:text-slate-400">
+              <p className="text-sm text-zinc-500 dark:text-zinc-400">
                 {series.length} {series.length === 1 ? 'series' : 'series'}
               </p>
             </div>
