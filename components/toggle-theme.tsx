@@ -17,7 +17,7 @@ const ThemeSwitch = () => {
   return (
     <button
       onClick={toggleTheme}
-      className="hover:text-zinc-600 dark:hover:text-zinc-600 flex items-center justify-center rounded-lg p-2 font-bold transition-transform duration-200 hover:scale-110 hover:rotate-270 hover:bg-zinc-100 hover:dark:bg-zinc-900"
+      className="text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white flex items-center justify-center rounded-lg p-2 font-bold transition-transform duration-200 hover:scale-110 hover:rotate-270 hover:bg-zinc-100 hover:dark:bg-zinc-900"
       aria-label="Toggle theme"
     >
       {mounted ? (
