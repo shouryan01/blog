@@ -3,9 +3,11 @@ import { Container } from '../components/container';
 import { AppProvider } from '../components/contexts/appContext';
 import { Footer } from '../components/footer';
 import { Layout } from '../components/layout';
-import { PersonalHeader } from '../components/personal-theme-header';
+import { Header } from '../components/header';
+import AuthorLayout from '../components/author';
 import { ZenProvider } from './zen-context';
 import Main from './Main';
+import { authorData } from '../data/author';
 import {
 	PostsByPublicationDocument,
 	PostsByPublicationQuery,
@@ -34,15 +36,16 @@ export default async function Index() {
 			</div>
 		);
 	}
+
 	return (
 		<ZenProvider>
 			<AppProvider publication={publication}>
 				<Main>
 					<Layout publication={publication}>
 						<div className="min-h-screen bg-transparent">
-							<Container className="mx-auto flex max-w-6xl flex-col items-stretch gap-10 px-5 py-10">
-								<PersonalHeader />
-								{/* <Footer publication={publication} /> */}
+							<Container className="mx-auto flex max-w-5xl flex-col items-stretch gap-10 px-5 py-10">
+								<Header />
+								<AuthorLayout content={authorData} publication={publication}/>
 							</Container>
 						</div>
 					</Layout>

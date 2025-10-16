@@ -2,7 +2,7 @@ import { Container } from "../../components/container"
 import { AppProvider } from "../../components/contexts/appContext"
 import { Footer } from "../../components/footer";
 import { Layout } from "../../components/layout"
-import { PersonalHeader } from "../../components/personal-theme-header";
+import { Header } from "../../components/header";
 import {
 	PostsByPublicationDocument,
 	PostsByPublicationQuery,
@@ -49,8 +49,8 @@ export default async function Blog() {
 	return (
 		<AppProvider publication={publication}>
 			<Layout publication={publication}>
-				<Container className="mx-auto flex max-w-4xl flex-col items-stretch gap-10 px-5 py-10">
-					<PersonalHeader />
+				<Container className="mx-auto flex max-w-5xl flex-col items-stretch gap-10 px-5 py-10">
+					<Header />
 
 					{/* Blog title */}
 					{/* <h1 className="text-3xl font-bold text-zinc-900 dark:text-white">

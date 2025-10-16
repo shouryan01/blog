@@ -10,7 +10,7 @@ import { DateFormatter } from '../../components/date-formatter';
 import { Footer } from '../../components/footer';
 import { Layout } from '../../components/layout';
 import { MarkdownToHtml } from '../../components/markdown-to-html';
-import { PersonalHeader } from '../../components/personal-theme-header';
+import { Header } from '../../components/header';
 import {
 	PageByPublicationDocument,
 	PostFullFragment,
@@ -112,7 +112,7 @@ export default async function PostOrPage({ params }: { params: Promise<{ slug: s
 			<AppProvider publication={publication} post={post} page={null}>
 				<Layout publication={publication}>
 					<Container className="mx-auto flex max-w-3xl flex-col items-stretch gap-10 px-5 py-10">
-						<PersonalHeader />
+						<Header />
 						<article className="flex flex-col items-start gap-10 pb-10">
 							<Post publication={publication} post={post} />
 							<PostOrPageClient post={post} />
@@ -135,7 +135,7 @@ export default async function PostOrPage({ params }: { params: Promise<{ slug: s
 			<AppProvider publication={publication} post={null} page={page}>
 				<Layout publication={publication}>
 					<Container className="mx-auto flex max-w-3xl flex-col items-stretch gap-10 px-5 py-10">
-						<PersonalHeader />
+						<Header />
 						<article className="flex flex-col items-start gap-10 pb-10">
 							<Page page={page} />
 							<PostOrPageClient post={null} />

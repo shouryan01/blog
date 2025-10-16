@@ -50,7 +50,7 @@ export default function Main({ children }: MainProps) {
       />
 
       {/* Snowfall Effect - Always visible */}
-      <Snowfall color="#fbcfe8" snowflakeCount={snowflakeCount} />
+      <Snowfall color="#fbcfe8" snowflakeCount={snowflakeCount} radius={[0.5, 4]} />
 
       {/* Zen Mode Button */}
       <button

@@ -1,6 +1,6 @@
 import { Container } from '../../components/container';
 import { Layout } from '../../components/layout';
-import { PersonalHeader } from '../../components/personal-theme-header';
+import { Header } from '../../components/header';
 import { Footer } from '../../components/footer';
 import { AppProvider } from '../../components/contexts/appContext';
 import { PostFragment, PublicationFragment, PostsByPublicationQuery, PostsByPublicationQueryVariables } from '../../generated/graphql';
@@ -102,7 +102,7 @@ export default async function Archive() {
     <AppProvider publication={publication}>
       <Layout publication={publication}>
         <Container className="mx-auto flex max-w-3xl flex-col items-stretch gap-10 px-5 py-10">
-          <PersonalHeader />
+          <Header />
           <main>
             <h1 className="mb-8 text-3xl font-bold text-zinc-900 dark:text-white">Archive</h1>
             <div className="space-y-12">
