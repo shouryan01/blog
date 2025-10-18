@@ -68,7 +68,7 @@ export default async function Blog() {
 							Archived Posts →
 						</Link>
 					</div> */}
-					{/* <Footer publication={publication} /> */}
+					<Footer publication={publication} />
 				</Container>
 			</Layout>
 		</AppProvider>
