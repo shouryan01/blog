@@ -4,6 +4,7 @@ import { Footer } from "../../components/footer";
 import { Layout } from "../../components/layout"
 import { Header } from "../../components/header";
 import Link from "next/link";
+import { Suspense } from "react";
 import {
 	PostsByPublicationDocument,
 	PostsByPublicationQuery,
@@ -59,7 +60,9 @@ export default async function Blog() {
 					</h1> */}
 
 					{/* Search + Posts (client) */}
-					<SearchAndListClient publication={publication} initialPosts={initialPosts} initialPageInfo={initialPageInfo} />
+					<Suspense fallback={<div className="text-zinc-500 dark:text-zinc-400">Loading...</div>}>
+						<SearchAndListClient publication={publication} initialPosts={initialPosts} initialPageInfo={initialPageInfo} />
+					</Suspense>
 					{/* <div className="mt-6 flex justify-center">
 						<Link
 							href="/archive"
