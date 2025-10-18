@@ -31,7 +31,7 @@ const Post = ({ publication, post }: { publication: PublicationFragment; post: P
 	const tagsList = (post.tags ?? []).map((tag) => (
 		<li key={tag.id}>
 			<Link
-				href={`/tag/${tag.slug}`}
+				href={`/tags/${tag.slug}`}
 				className="inline-block rounded-full bg-zinc-100 px-3 py-1 text-sm text-zinc-700 hover:bg-zinc-200 dark:bg-zinc-800 dark:text-zinc-300 dark:hover:bg-zinc-700"
 			>
 				#{tag.slug}
@@ -56,8 +56,8 @@ const Post = ({ publication, post }: { publication: PublicationFragment; post: P
 						{post.title}
 					</h1>
 					<div className="flex flex-wrap items-center gap-x-3 text-sm text-zinc-500 dark:text-zinc-400">
-						<span className="font-medium text-zinc-700 dark:text-zinc-300">{post.author.name}</span>
-						<span>·</span>
+						{/* <span className="font-medium text-zinc-700 dark:text-zinc-300">{post.author.name}</span> */}
+						{/* <span>·</span> */}
 						<DateFormatter dateString={post.publishedAt} />
 						<span>·</span>
 						<span>{post.readTimeInMinutes} min read</span>
@@ -111,7 +111,7 @@ export default async function PostOrPage({ params }: { params: Promise<{ slug: s
 		return (
 			<AppProvider publication={publication} post={post} page={null}>
 				<Layout publication={publication}>
-					<Container className="mx-auto flex max-w-3xl flex-col items-stretch gap-10 px-5 py-10">
+					<Container className="mx-auto flex max-w-5xl flex-col items-stretch gap-10 px-5 py-10">
 						<Header />
 						<article className="flex flex-col items-start gap-10 pb-10">
 							<Post publication={publication} post={post} />
@@ -134,7 +134,7 @@ export default async function PostOrPage({ params }: { params: Promise<{ slug: s
 		return (
 			<AppProvider publication={publication} post={null} page={page}>
 				<Layout publication={publication}>
-					<Container className="mx-auto flex max-w-3xl flex-col items-stretch gap-10 px-5 py-10">
+					<Container className="mx-auto flex max-w-5xl flex-col items-stretch gap-10 px-5 py-10">
 						<Header />
 						<article className="flex flex-col items-start gap-10 pb-10">
 							<Page page={page} />

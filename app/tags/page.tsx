@@ -80,8 +80,16 @@ export default async function Tags() {
   return (
     <AppProvider publication={publication}>
       <Layout publication={publication}>
-        <Container className="mx-auto flex max-w-3xl flex-col items-stretch gap-10 px-5 py-10">
+        <Container className="mx-auto flex max-w-5xl flex-col items-stretch gap-10 px-5 py-10">
           <Header />
+          <div className="mb-6">
+            <Link
+              href="/blog"
+              className="inline-flex hover:underline items-center text-sm text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-200 transition-colors"
+            >
+              ← Back to Blog
+            </Link>
+          </div>
           <main>
             <h1 className="mb-8 text-3xl font-bold text-zinc-900 dark:text-white">Tags</h1>
             <div className="flex flex-wrap gap-4">
@@ -104,7 +112,7 @@ export default async function Tags() {
               )}
             </div>
           </main>
-          <Footer publication={publication} />
+          {/* <Footer publication={publication} /> */}
         </Container>
       </Layout>
     </AppProvider>

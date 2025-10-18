@@ -3,6 +3,7 @@ import { AppProvider } from "../../components/contexts/appContext"
 import { Footer } from "../../components/footer";
 import { Layout } from "../../components/layout"
 import { Header } from "../../components/header";
+import Link from "next/link";
 import {
 	PostsByPublicationDocument,
 	PostsByPublicationQuery,
@@ -12,7 +13,7 @@ import {
 	PublicationFragment,
 } from "../../generated/graphql";
 import request from 'graphql-request';
-import { HomeClient } from '../home-client';
+import SearchAndListClient from './search-and-list-client';
 
 const GQL_ENDPOINT = process.env.NEXT_PUBLIC_HASHNODE_GQL_ENDPOINT;
 
@@ -57,11 +58,16 @@ export default async function Blog() {
 						Blog
 					</h1> */}
 
-					{/* Posts list */}
-					<HomeClient
-						initialPosts={initialPosts}
-						initialPageInfo={initialPageInfo}
-					/>
+					{/* Search + Posts (client) */}
+					<SearchAndListClient publication={publication} initialPosts={initialPosts} initialPageInfo={initialPageInfo} />
+					{/* <div className="mt-6 flex justify-center">
+						<Link
+							href="/archive"
+							className="text-zinc-700 hover:underline underline-offset-4 transition-colors hover:text-zinc-900 dark:text-zinc-300 dark:hover:text-white"
+						>
+							Archived Posts →
+						</Link>
+					</div> */}
 					{/* <Footer publication={publication} /> */}
 				</Container>
 			</Layout>

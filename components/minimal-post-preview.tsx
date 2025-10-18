@@ -36,7 +36,7 @@ export const MinimalPostPreview = ({ title, date, slug, commentCount, brief, aut
 
 				{/* 元信息 */}
 				<div className="flex flex-wrap items-center gap-x-3 text-sm text-zinc-500 dark:text-zinc-400">
-					<span>Date: <DateFormatter dateString={date} /></span>
+					<span><DateFormatter dateString={date} /></span>
 					<span>|</span>
 					<span>Estimated Reading Time: {readTimeInMinutes} min</span>
 					{/* <span>|</span>

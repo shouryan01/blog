@@ -15,11 +15,13 @@ import request from 'graphql-request';
 const GQL_ENDPOINT = process.env.NEXT_PUBLIC_HASHNODE_GQL_ENDPOINT;
 
 type Props = {
-	initialPosts: PostFragment[];
-	initialPageInfo: PageInfoFragment;
+    initialPosts: PostFragment[];
+    initialPageInfo: PageInfoFragment;
+    filterQuery?: string;
+    filterTag?: string | null;
 };
 
-export function HomeClient({ initialPosts, initialPageInfo }: Props) {
+export function HomeClient({ initialPosts, initialPageInfo, filterQuery, filterTag }: Props) {
 	const [posts, setPosts] = useState<PostFragment[]>(initialPosts);
 	const [pageInfo, setPageInfo] = useState<PageInfoFragment>(initialPageInfo);
 	const [loadedMore, setLoadedMore] = useState(false);
@@ -43,9 +45,28 @@ export function HomeClient({ initialPosts, initialPageInfo }: Props) {
 		setLoadedMore(true);
 	};
 
+	const normalizedQuery = (filterQuery ?? '').trim().toLowerCase();
+	let workingPosts = posts;
+
+	// Filter by tag
+	if (filterTag) {
+		workingPosts = workingPosts.filter((post) =>
+			post.tags?.some(tag => tag.slug === filterTag)
+		);
+	}
+
+	// Filter by search query
+	const filteredPosts = normalizedQuery
+		? workingPosts.filter((post) => {
+			const title = (post.title ?? '').toLowerCase();
+			const brief = (post.brief ?? '').toLowerCase();
+			return title.includes(normalizedQuery) || brief.includes(normalizedQuery);
+		})
+		: workingPosts;
+
 	return (
 		<>
-			{posts.length > 0 && <MinimalPosts context="home" posts={posts} />}
+			{filteredPosts.length > 0 && <MinimalPosts context="home" posts={filteredPosts} />}
 			{!loadedMore && pageInfo.hasNextPage && pageInfo.endCursor && (
 				<button onClick={loadMore}>
 					Load more

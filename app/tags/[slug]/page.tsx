@@ -73,8 +73,17 @@ export default async function TagPosts({ params }: { params: Promise<{ slug: str
   return (
     <AppProvider publication={publication}>
       <Layout publication={publication}>
-        <Container className="mx-auto flex max-w-3xl flex-col items-stretch gap-10 px-5 py-10">
+        <Container className="mx-auto flex max-w-5xl flex-col items-stretch gap-10 px-5 py-10">
           <Header />
+          <div className="mb-6">
+            <Link
+              href="/tags"
+              className="inline-flex hover:underline items-center text-sm text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-200 transition-colors"
+            >
+
+              ← All Tags
+            </Link>
+          </div>
           <main>
             <div className="mb-8 flex items-baseline gap-4">
               <h1 className="text-3xl font-bold text-zinc-900 dark:text-white">
@@ -90,7 +99,7 @@ export default async function TagPosts({ params }: { params: Promise<{ slug: str
                   <div className="flex items-baseline justify-between gap-2">
                     <Link
                       href={`/${post.slug}`}
-                      className="text-lg font-medium text-zinc-900 hover:text-blue-600 dark:text-white dark:hover:text-blue-400"
+                      className="text-lg font-medium text-zinc-900 hover:text-pink-500/90 dark:text-white"
                     >
                       {post.title}
                     </Link>
@@ -113,7 +122,7 @@ export default async function TagPosts({ params }: { params: Promise<{ slug: str
               )}
             </div>
           </main>
-          <Footer publication={publication} />
+          {/* <Footer publication={publication} /> */}
         </Container>
       </Layout>
     </AppProvider>
