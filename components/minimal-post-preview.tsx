@@ -18,7 +18,7 @@ export const MinimalPostPreview = ({ title, date, slug, commentCount, brief, aut
 	const postURL = `/${slug}`;
 
 	return (
-		<article className="group relative rounded-lg border-zinc-200 bg-white pl-4 py-2 transition-colors hover:bg-zinc-100 dark:bg-zinc-800">
+		<article className="group relative rounded-lg border-zinc-200 bg-white dark:bg-zinc-950 pl-4 py-2 transition-colors hover:bg-zinc-100 dark:hover:bg-zinc-800">
 			<div className="flex flex-col gap-2">
 				<h2 className="text-xl font-semibold tracking-tight text-zinc-900 dark:text-white">
 					<Link href={postURL} className="after:absolute after:inset-0">
